@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   apiUrl:"http://157.245.77.89:8080/v1"
-  //apiUrl:"https://demo-customer-api-ef3apakoka-uc.a.run.app/v1"
 };
 
 /*
