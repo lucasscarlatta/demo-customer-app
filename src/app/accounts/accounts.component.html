@@ -1,0 +1,49 @@
+<div class="header">
+  <button mat-button (click)="backToUsers()"><-Back To Users</button>
+    <button mat-raised-button color="primary" (click)="newAccount()">New Account</button>
+    <h3 *ngIf="currentUser" class="user-info" ><b>Customer: {{currentUser.surname}} {{currentUser.name}}</b></h3>
+  </div>
+  <hr>
+<div class="accounts-list">
+    <mat-card *ngFor="let a of accounts">
+        <mat-card-title>{{a.name}}
+            <div class="action-buttons">
+            <button mat-button color="primary" *ngIf="selectedAccountId !== a.id" (click)="viewTransactions(a.id)">View Details</button>
+            <button mat-button color="primary" *ngIf="selectedAccountId === a.id" (click)="hideTransactions(a.id)">Hide Details</button>
+            <button mat-button (click)="addAmount(a)">Add Money</button>
+            <button mat-button (click)="reduceAmount(a)">Withdraw</button>
+        </div>
+        </mat-card-title>
+        <mat-card-subtitle>Balance: {{a.balance|currency}}</mat-card-subtitle>
+        
+        <div *ngIf="selectedAccountId === a.id">
+            <mat-divider></mat-divider>
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" sort>
+              
+                  <!-- Type Column -->
+                  <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Type </th>
+                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                  </ng-container>
+              
+                  <!-- Amount Column -->
+                  <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef> Amount </th>
+                    <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+                  </ng-container>
+              
+                  <!-- Date Column -->
+                  <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.time | date}} </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </div>
+
+        </div>
+    </mat-card>
+    </div>

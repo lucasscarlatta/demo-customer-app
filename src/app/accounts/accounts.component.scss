@@ -1,0 +1,23 @@
+.header{
+    // width: fit-content;
+     display: flex;
+}
+.user-info{
+    margin-left:20px;
+    margin-bottom:0px;
+    margin-top:5px;
+}
+
+.mat-card{
+    margin:10px;
+    // flex-wrap: nowrap;
+    // flex-basis: auto;
+}
+.action-buttons{
+    right: 0px;
+    position:absolute;
+    width: fit-content;
+}
+table {
+    width: 100%;
+  } 
